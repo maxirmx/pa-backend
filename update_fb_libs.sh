@@ -15,7 +15,7 @@ echo -e "${BLUE}Facebook C++ Libraries Update Script${NC}"
 echo -e "${BLUE}==============================================${NC}"
 
 # Create a temporary directory for the build
-BUILD_DIR="/tmp/fb_cpp_build"
+BUILD_DIR="~/fb_cpp_build"
 CORES=$(nproc)
 
 # Check for sudo
