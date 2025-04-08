@@ -1,0 +1,36 @@
+{
+  "server": {
+    "host": "0.0.0.0",
+    "http_port": 8080,
+    "https_port": 8443,
+    "threads": 4,
+    "idle_timeout": 60000,
+    "ssl": {
+      "cert_path": "./ssl/cert.pem",
+      "key_path": "./ssl/key.pem",
+      "ca_path": "./ssl/ca.pem",
+      "passphrase": ""
+    }
+  },
+  "database": {
+    "host": "localhost",
+    "port": 5432,
+    "user": "app_user",
+    "password": "change_this_password",
+    "dbname": "secure_app",
+    "ssl_mode": "require"
+  },
+  "security": {
+    "jwt_secret": "change_this_secret_key",
+    "jwt_expiration": 3600,
+    "bcrypt_cost": 12,
+    "rate_limit": {
+      "requests_per_minute": 60,
+      "enabled": true
+    }
+  },
+  "logging": {
+    "level": "info",
+    "file": "./logs/app.log"
+  }
+}
