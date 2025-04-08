@@ -2,14 +2,14 @@ name: CI/CD Pipeline
 
 on:
   push:
-    branches: [ main ]
+    branches: [ main, master ]
   pull_request:
-    branches: [ main ]
+    branches: [ main, master ]
   workflow_dispatch:  # Allow manual triggering
 
 jobs:
   build-and-test:
-    runs-on: ubuntu-22.04
+    runs-on: ubuntu-latest
 
     services:
       postgres:
@@ -40,22 +40,29 @@ jobs:
         restore-keys: |
           ${{ runner.os }}-dependencies-
 
+    - name: Install system dependencies
+      run: |
+        sudo apt-get update
+        sudo apt-get install -y \
+          build-essential \
+          cmake \
+          libgflags-dev \
+          libgoogle-glog-dev \
+          libssl-dev \
+          zlib1g-dev \
+          libzstd-dev \
+          libevent-dev \
+          libdouble-conversion-dev \
+          libboost-all-dev \
+          liblz4-dev \
+          libbrotli-dev \
+          libsodium-dev \
+          openssl
+
     - name: Update Facebook Libraries
       id: fb-libs
       run: |
-        echo "::group::Updating Facebook Libraries"
-        # Create a modified version of the update script that doesn't require sudo
-        # since we're already running in a privileged context
-        sed 's/if \[\[ \$EUID -ne 0 \]\]; then/if false; then/' update_fb_libs.sh > update_fb_libs_ci.sh
-        sed -i 's/sudo //' update_fb_libs_ci.sh
-        chmod +x update_fb_libs_ci.sh
-
-        # Run the script with error handling
-        if ! sudo ./update_fb_libs_ci.sh; then
-          echo "::error::Failed to update Facebook libraries"
-          exit 1
-        fi
-        echo "::endgroup::"
+        sudo ./update_fb_libs.sh
 
     - name: Initialize PostgreSQL Database
       id: init-db
