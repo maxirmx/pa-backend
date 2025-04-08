@@ -7,6 +7,10 @@ on:
     branches: [ main, master ]
   workflow_dispatch:  # Allow manual triggering
 
+concurrency:
+  group: '${{ github.workflow }}-${{ github.job }}-${{ github.head_ref || github.ref_name }}'
+  cancel-in-progress: true
+
 jobs:
   build-and-test:
     runs-on: ubuntu-latest
@@ -34,8 +38,8 @@ jobs:
       uses: actions/cache@v4
       with:
         path: |
-          ~/fb_cpp_build
-          ~/proxygen-cache
+          fb_cpp_build
+          proxygen-cache
         key: ${{ runner.os }}-dependencies-${{ hashFiles('update_fb_libs.sh') }}
         restore-keys: |
           ${{ runner.os }}-dependencies-

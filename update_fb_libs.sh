@@ -15,7 +15,7 @@ echo -e "${BLUE}Facebook C++ Libraries Update Script${NC}"
 echo -e "${BLUE}==============================================${NC}"
 
 # Create a temporary directory for the build
-BUILD_DIR="~/fb_cpp_build"
+BUILD_DIR="fb_cpp_build"
 CORES=$(nproc)
 
 # Check for sudo
@@ -62,10 +62,6 @@ echo -e "\n${GREEN}==== Installing proxygen ====${NC}"
 # Update the shared library cache
 echo -e "\n${GREEN}Updating shared library cache...${NC}"
 ldconfig
-
-# Cleanup
-echo -e "\n${GREEN}Cleaning up...${NC}"
-rm -rf "${BUILD_DIR}"
 
 echo -e "\n${GREEN}==============================================${NC}"
 echo -e "${GREEN}Facebook C++ Libraries updated successfully!${NC}"
