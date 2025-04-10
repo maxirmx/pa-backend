@@ -167,7 +167,8 @@ bool ServerApp::setupSSL(proxygen::HTTPServerOptions& options) {
         auto sslContext = std::make_shared<folly::SSLContext>();
 
         // Set cipher list
-        sslContext->setCipherList("ECDHE-ECDSA-AES128-GCM-SHA256:ECDHE-RSA-AES128-GCM-SHA256:ECDHE-ECDSA-AES256-GCM-SHA384:ECDHE-RSA-AES256-GCM-SHA384:ECDHE-ECDSA-CHACHA20-POLY1305:ECDHE-RSA-CHACHA20-POLY1305");
+        sslContext->setCipherList("ECDHE-ECDSA-AES128-GCM-SHA256:ECDHE-RSA-AES128-GCM-SHA256");
+        sslContext->setOptions(SSL_OP_NO_SSLv3 | SSL_OP_NO_TLSv1 | SSL_OP_NO_TLSv1_1);
 
         // Load certificate and private key
         std::string certPath = sslConfig.value("cert_path", "./ssl/cert.pem");
