@@ -61,7 +61,8 @@ jobs:
           liblz4-dev \
           libbrotli-dev \
           libsodium-dev \
-          openssl
+          openssl \
+          nlohmann-json3-dev
 
     - name: Update Facebook Libraries
       id: fb-libs
