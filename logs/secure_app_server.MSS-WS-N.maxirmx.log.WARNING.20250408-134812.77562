@@ -1,6 +1,0 @@
-Log file created at: 2025/04/08 13:48:12
-Running on machine: MSS-WS-N
-Log line format: [IWEF]mmdd hh:mm:ss.uuuuuu threadid file:line] msg
-E0408 13:48:12.686726 77562 DatabaseManager.cpp:47] Database initialization error: [json.exception.type_error.302] type must be string, but is number
-E0408 13:48:12.687389 77562 ServerApp.cpp:150] Failed to initialize database
-E0408 13:48:12.687407 77562 main.cpp:70] Failed to initialize server
