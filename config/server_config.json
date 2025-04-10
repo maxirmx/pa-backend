@@ -18,7 +18,7 @@
     "user": "app_user",
     "password": "change_this_password",
     "dbname": "secure_app",
-    "ssl_mode": "require"
+    "ssl_mode": "disable"
   },
   "security": {
     "jwt_secret": "change_this_secret_key",
