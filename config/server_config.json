@@ -14,7 +14,7 @@
   },
   "database": {
     "host": "localhost",
-    "port": 5432,
+    "port": "5432",
     "user": "app_user",
     "password": "change_this_password",
     "dbname": "secure_app",
