@@ -59,6 +59,7 @@ jobs:
           libdouble-conversion-dev \
           libboost-all-dev \
           liblz4-dev \
+          libbz2-dev \
           libbrotli-dev \
           libsodium-dev \
           openssl \
